@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מעקב בזמן אמת</title>
+
+    <link href="../css/tracking.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../js/trackService.js"></script>
+    <script src="../js/ajaxCalls.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAtGRYVkfZ-u4_vRnJE6c-LL3EwYRcXhPc&libraries=places&callback=initializeAutocomplete" async defer></script>
+
+    <link href="../css/myAlertMessage.css" rel="stylesheet" />
+    <script src="../js/myAlertMessage.js"></script>
+
+    <script src="../js/Server.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div id="driver-info">
+            <p><strong>Driver's Name:</strong> <span id="driverName"></span></p>
+            <p><strong>Driver's Phone:</strong> <span id="driverPhone"></span></p>
+        </div>
+        <div id="map"></div>
+    </div>
+
+    <!--Alert Message-->
+    <div id="customAlert" class="custom-alert">
+        <p id="alertMessage"></p>
+        <button onclick="closeAlert()">OK</button>
+    </div>
+
+    <!--Successs message-->
+    <div id="customSuccess" class="custom-success">
+        <p id="successMessage"></p>
+        <button onclick="CloseSuccess()">OK</button>
+    </div>
+</body>
+</html>

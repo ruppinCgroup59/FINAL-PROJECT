@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <title>עמוד מוביל</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.7.0/main.min.css" rel="stylesheet">
+
+    <link href="../css/Supplier_MAIN.css" rel="stylesheet" />
+    <link href="../css/Services.css" rel="stylesheet" />
+
+    <script src="../js/CalendarRender.js"></script>
+    <script src="../js/Render_Supplier_MAIN.js"></script>
+    <script src="../js/ajaxCalls.js"></script>
+    <script src="../js/Services.js"></script>
+    <script src="../js/display_Feedback.js"></script>
+
+    <link href="../css/myAlertMessage.css" rel="stylesheet" />
+    <script src="../js/myAlertMessage.js"></script>
+
+    <script src="../js/Server.js"></script>
+</head>
+<body>
+
+    <div class="container emp-profile">
+        <form method="post" onsubmit="return false;">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="profile-img">
+                        <a id="EditBTN" class="btn btn-outline-primary btn-sm ml-2 mb-3">עריכת פרופיל</a>
+                        <img src="../images/icon_new.png" />
+
+                        <!--זה עבד לנו רק בלוקל הוסט , בזמן העלאה לשרת של רופין, נתקלנו בבעיה בהעלאה וטעינת תמונות ולכן שמנו תמונה סטטית קבוע-->
+                        <!--Profile Image-->
+                        <!--<div class="profile-img">
+                                <img id="supplierPicture" src=""/>
+                            </div>
+                            <div class="file btn btn-lg btn-primary">
+                                החלף תמונה
+                                <input type="file" name="file" id="Picture" />
+                            </div>-->
+
+                    </div>
+                    <div class="profile-work">
+                        <h4 class="Area_Header">אזור שירות</h4>
+                        <h6 class="AreaPref text-center mb-3"><!-- Placeholder for Prefer Area --></h6>
+
+                    </div>
+                    <div id="serviceTrack-container">
+
+                    </div>
+                    <div id="button-container" class="button-container">
+                        <input type="button" id="start-service" class="btn btn-success btn-sm mt-2" name="name" value="התחל הובלה" />
+                        <input type="button" id="stop-service" class="btn btn-danger btn-sm mt-2" name="name" value="עצור הובלה" />
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <a id="Logout" class="btn btn-outline-danger btn-sm ml-2">התנתק</a>
+                    <div class="profile-head text-center">
+                        <h5 id="FullNameHeader">
+                            <!-- Placeholder for Name -->
+                        </h5>
+                        <h6 id="CompanyName">
+                            <!-- Placeholder for CompanyName -->
+                        </h6>
+                        <h3 class="proile-rating text-right">דירוג מוביל : <span id="ranking"><!-- Placeholder for Rankings -->/5</span></h3>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="details-tab" data-toggle="tab" href="#details" role="tab" aria-controls="details" aria-selected="true">פרטים</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="message-tab" data-toggle="tab" href="#message" role="tab" aria-controls="message" aria-selected="false">הצעות עבודה</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">חוות דעת</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <div class="tab-content profile-tab" id="myTabContent">
+                        <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
+                            <div class="row text-right mb-3">
+                                <div class="col-md-2">
+                                    <label>שם</label>
+                                </div>
+                                <div class="col-md-10">
+                                    <!-- Placeholder for Name -->
+                                    <p id="FullName"></p>
+                                </div>
+                            </div>
+                            <div class="row text-right mb-3">
+                                <div class="col-md-2">
+                                    <label>כתובת מייל</label>
+                                </div>
+                                <div class="col-md-10">
+                                    <!-- Placeholder for Email -->
+                                    <p id="Email"></p>
+                                </div>
+                            </div>
+                            <div class="row text-right mb-3">
+                                <div class="col-md-2">
+                                    <label>טלפון</label>
+                                </div>
+                                <div class="col-md-10">
+                                    <!-- Placeholder for Phone -->
+                                    <p id="PhoneNum"></p>
+                                </div>
+                            </div>
+                            <div class="row text-center">
+                                <div class="col">
+                                    <div id="calendar" style="width: 100%; height: 400px;"></div>
+                                    <!-- Placeholder for CALENDAR -->
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="message" role="tabpanel" aria-labelledby="message-tab">
+                            <!--Placeholder for message-->
+                            <div class="row">
+                                <div class="col text-right">
+                                    <div id="services-container" class="services-container"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                            <div class="row text-right">
+                                <div class="col">
+                                    <div id="reviews-container" class="reviews-container">
+                                        <!-- Reviews content will be populated here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!--Alert Message-->
+    <div id="customAlert" class="custom-alert">
+        <p id="alertMessage"></p>
+        <button onclick="closeAlert()">OK</button>
+    </div>
+
+    <!--Successs message-->
+    <div id="customSuccess" class="custom-success">
+        <p id="successMessage"></p>
+        <button onclick="CloseSuccess()">OK</button>
+    </div>
+</body>
+</html>

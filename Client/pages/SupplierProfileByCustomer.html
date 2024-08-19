@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+
+    <link href="../css/Supplier_MAIN.css" rel="stylesheet" />
+
+    <script src="../js/Render_Supplier_Profile_By_Customer.js"></script>
+    <script src="../js/ajaxCalls.js"></script>
+
+    <link href="../css/myAlertMessage.css" rel="stylesheet" />
+    <script src="../js/myAlertMessage.js"></script>
+
+    <script src="../js/Server.js"></script>
+</head>
+<body>
+
+    <div class="container emp-profile">
+        <form method="post">
+            <div class="row">
+                <div class="col-md-4">
+                    <!--Profile Image-->
+                    <div class="profile-img">
+                        <!--<img id="supplierPhoto" src="" />-->
+                        <img src="../images/icon_new.png" /> <!--זה עבד לנו רק בלוקל הוסט , בזמן העלאה לשרת של רופין, נתקלנו בבעיה בהעלאה וטעינת תמונות ולכן שמנו תמונה סטטית קבוע-->
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="profile-head text-center">
+                        <h5 id="FullNameHeader">
+                            <!-- Placeholder for Name -->
+                        </h5>
+                        <h6 id="CompanyName">
+                            <!-- Placeholder for CompanyName -->
+                        </h6>
+                        <h3 class="proile-rating text-right">
+                            טופס בקשת שירות :
+                            <a href="Service_Request_Form.html" class="btn btn-outline-info ml-3 mr-4">למעבר לטופס</a>
+                        </h3>
+                        <h3 class="proile-rating text-right">
+                            דירוג המוביל :
+                            <span id="SupplierRanking"><!-- Placeholder for Rankings --></span>
+                            <a href="feedbackPageBySupplier.html" class="btn btn-outline-info ml-3 mr-4">לצפייה בחוות דעת</a>
+                        </h3>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">פרטי המוביל</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <a id="backToMain" href="#" class="back-main-btn" name="btnAddMore" value="Edit Profile">חזרה למסך הראשי</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="profile-work">
+                        <h4 class="Area_Header">אזור שירות</h4>
+                        <h6 class="AreaPref text-center mb-3"></h6>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="tab-content profile-tab" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="row text-right mb-3">
+                                <div class="col-md-2">
+                                    <label>שם מלא</label>
+                                </div>
+                                <div class="col-md-10">
+                                    <!-- Placeholder for Name -->
+                                    <p id="FullName"></p>
+                                </div>
+                            </div>
+                            <div class="row text-right mb-3">
+                                <div class="col-md-2">
+                                    <label>כתובת מייל</label>
+                                </div>
+                                <div class="col-md-10">
+                                    <!-- Placeholder for Email -->
+                                    <p id="Email"></p>
+                                </div>
+                            </div>
+                            <div class="row text-right mb-3">
+                                <div class="col-md-2">
+                                    <label>טלפון</label>
+                                </div>
+                                <div class="col-md-10">
+                                    <!-- Placeholder for Phone -->
+                                    <p id="PhoneNum"></p>
+                                </div>
+                            </div>
+                            <div class="row text-right mb-3">
+                                <div class="col-md-4">
+                                    <label>שלח ווטסאפ</label>
+                                    <!-- WhatsApp Logo Link -->
+                                    <span>
+                                        <a id="Whatsapp_Link" href="https://api.whatsapp.com/send?phone=972544859092">
+                                            <img id="Whatsapp_IMG" src="../images/Whatsapp_Logo.png" alt="WhatsApp Logo " class="mr-2">
+                                        </a>
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <!-- Placeholder for Timeline -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!--Alert Message-->
+    <div id="customAlert" class="custom-alert">
+        <p id="alertMessage"></p>
+        <button onclick="closeAlert()">OK</button>
+    </div>
+
+    <!--Successs message-->
+    <div id="customSuccess" class="custom-success">
+        <p id="successMessage"></p>
+        <button onclick="CloseSuccess()">OK</button>
+    </div>
+
+</body>
+</html>

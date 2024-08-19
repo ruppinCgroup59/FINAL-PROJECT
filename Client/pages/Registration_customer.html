@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>רישום לקוח</title>
+    <link href="../css/Registration.css" rel="stylesheet" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <!-- Google Maps API with Places Library -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAtGRYVkfZ-u4_vRnJE6c-LL3EwYRcXhPc&libraries=places&callback=initializeAutocomplete" async defer></script>
+
+    <script src="../js/ajaxCalls.js"></script>
+    <script src="../js/Registration_customer.js"></script>
+
+    <link href="../css/myAlertMessage.css" rel="stylesheet" />
+    <script src="../js/myAlertMessage.js"></script>
+
+    <script src="../js/Server.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="title text-right">רישום לקוח</div>
+        <div class="content">
+            <form id="registrationForm" action="pForm" method="post">
+                <div class="user-details">
+
+                    <div class="input-box text-right">
+                        <span class="details">שם משתמש</span>
+                        <input type="text" id="userName" placeholder="בחר שם משתמש" required>
+                    </div>
+
+                    <div class="input-box text-right">
+                        <span class="details">תעודת זהות</span>
+                        <input type="text" id="id" placeholder="הכנס תעודת זהות" required
+                               pattern="^\d{9}$" />
+                        <div class="invalid-feedback" id="id-feedback">מספר תעודת זהות חייב להכיל 9 ספרות</div>
+                    </div>
+
+                    <div class="input-box text-right">
+                        <span class="details">סיסמא</span>
+                        <input type="password" id="password" placeholder="בחר סיסמא" required>
+                    </div>
+
+                    <div class="input-box text-right">
+                        <span class="details">אימות סיסמא</span>
+                        <input type="password" id="confirmPassword" placeholder="אמת סיסמא" required>
+                    </div>
+
+                    <div class="input-box text-right">
+                        <span class="details">שם פרטי</span>
+                        <input type="text" id="firstName" placeholder="הכנס שם פרטי" required>
+                    </div>
+
+                    <div class="input-box text-right">
+                        <span class="details">שם משפחה</span>
+                        <input type="text" id="lastName" placeholder="הכנס שם משפחה" required>
+                    </div>
+
+                    <div class="input-box text-right">
+                        <span class="details">אימייל</span>
+                        <input type="email" id="email" placeholder="הכנס כתובת דואר אלקטרוני" required
+                               pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
+                        <div class="invalid-feedback" id="email-feedback">כתובת אימייל לא תקינה</div>
+                    </div>
+
+                    <div class="input-box text-right">
+                        <span class="details">מספר טלפון</span>
+                        <input type="text" id="phoneNumber" placeholder="הכנס מספר טלפון" required
+                               pattern="^(\+972|0)([23489]|5[0248]|7[2-9])\d{7}$" />
+                        <div class="invalid-feedback" id="phone-feedback">מספר טלפון לא תקין</div>
+                    </div>
+
+                    <div class="input-box text-right">
+                        <span class="details">כתובת</span>
+                        <input type="text" id="address" placeholder="הכנס כתובת" required>
+                    </div>
+
+                </div>
+                <button class="btn btn-primary btn-block" id="RegisterBTN">הירשם כלקוח</button>
+            </form>
+        </div>
+    </div>
+    
+    <!--Alert Message-->
+    <div id="customAlert" class="custom-alert">
+        <p id="alertMessage"></p>
+        <button onclick="closeAlert()">OK</button>
+    </div>
+
+    <!--Successs message-->
+    <div id="customSuccess" class="custom-success">
+        <p id="successMessage"></p>
+        <button onclick="CloseSuccess()">OK</button>
+    </div>
+</body>
+</html>
